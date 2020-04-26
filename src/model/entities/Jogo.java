@@ -8,8 +8,9 @@ public class Jogo {
 	private Integer tentativas;
 	private List<Slot> slots = new ArrayList<>();
 	
-	public Jogo() {
-		
+	public Jogo(List<Slot> slots) {
+		this.tentativas = 0;
+		this.slots = slots;
 	}
 
 	public Integer getTentativas() {
@@ -27,5 +28,4 @@ public class Jogo {
 	public void setTentativas(Integer tentativas) {
 		this.tentativas = tentativas;
 	}
-	
 }
