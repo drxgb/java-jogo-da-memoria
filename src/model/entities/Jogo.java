@@ -18,7 +18,7 @@ public class Jogo {
 	private List<Slot> slots = new ArrayList<>();
 	
 	public Jogo() {
-		this.tentativas = 0;
+		this.tentativas = 1;
 		this.tempoInicial = 0L;
 	}
 

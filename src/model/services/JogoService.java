@@ -9,6 +9,7 @@
 
 package model.services;
 
+import model.entities.Jogo;
 import model.entities.Slot;
 
 public interface JogoService {
@@ -38,5 +39,17 @@ public interface JogoService {
 	 * <p>Incrementa a quantidade de tentativas</p>
 	 */
 	void proximaTentativa();
+	
+	/**
+	 * <p>Recupera a instância do jogo</p>
+	 * @return a instância do jogo
+	 */
+	Jogo getJogo();
+	
+	/**
+	 * <p>Recupera a instância do serviço dos slots.</p>
+	 * @return o serviço dos slots
+	 */
+	SlotService getSlotService();
 
 }

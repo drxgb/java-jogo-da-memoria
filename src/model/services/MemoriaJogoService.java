@@ -32,6 +32,7 @@ public class MemoriaJogoService implements JogoService {
 		
 		this.defineSlots();	
 		this.slotService = slotService;
+		this.getJogo().setTempoInicial(System.currentTimeMillis());
 	}
 
 	@Override
@@ -45,6 +46,8 @@ public class MemoriaJogoService implements JogoService {
 
 	@Override
 	public boolean abreSlot(int pos) {
+		if(pos < 0 || pos >= this.getJogo().getSlots().size())
+			return false;
 		return this.getSlotService().revela(this.getJogo().getSlots().get(pos));
 	}
 
@@ -78,11 +81,37 @@ public class MemoriaJogoService implements JogoService {
 	 * <p>Guarda valores em um par de slots</p>
 	 */
 	private void defineSlots() {
-		for(int i = 0; i < 5; i++) {
-			int valor = random.nextInt(30) + 1;
-			this.insereValorSlot(valor);
-			this.insereValorSlot(valor);
+		int nums[] = this.gerarNumerosAleatorios();
+		for(int i = 0; i < nums.length; i++) {			
+			this.insereValorSlot(nums[i]);
+			this.insereValorSlot(nums[i]);
 		}
+	}
+	
+	/**
+	 * <p>Gera um arranjo de números aleatórios
+	 * não-repetitivos</p>
+	 * @return -> um array de números aleatórios
+	 */
+	private int[] gerarNumerosAleatorios() {
+		final int MAX = 20;
+		int nums[] = new int[5];
+		for(int i = 0; i < nums.length; i++) {
+			int aux;
+			boolean repetido;
+			do {
+				repetido = false;
+				aux = random.nextInt(MAX) + 1;
+				for(int j = 0; j < nums.length; j++) {
+					if(aux == nums[j]) {
+						repetido = true;
+						break;
+					}
+				}
+			} while(repetido);
+			nums[i] = aux;
+		}
+		return nums;
 	}
 	
 	/**
@@ -94,7 +123,7 @@ public class MemoriaJogoService implements JogoService {
 		do {
 			i = random.nextInt(10);
 		} while(this.getJogo().getSlots().get(i).getNumero() != null);
-		this.getJogo().getSlots().get(i).setNumero(i);
+		this.getJogo().getSlots().get(i).setNumero(valor);
 	}
 
 }

@@ -14,11 +14,12 @@ import model.entities.Slot;
 
 public class MemoriaSlotService implements SlotService {
 	
+	public MemoriaSlotService() {}
+	
 	@Override
 	public boolean revela(Slot slot) {
-		if(slot.isRevelado()) {
+		if(slot.isRevelado())
 			return false;
-		}
 		slot.setRevelado(true);
 		return true;
 	}

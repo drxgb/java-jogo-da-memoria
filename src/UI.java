@@ -9,10 +9,8 @@
  *
  */
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import exceptions.InputColunaException;
 import model.entities.Jogo;
 import model.entities.Slot;
 
@@ -45,7 +43,6 @@ public abstract class UI {
 		pausa(3000);
 		System.out.println("\nPronto!");
 		pausa(1000);
-		limpaTela();
 	}	
 	
 	/**
@@ -78,8 +75,15 @@ public abstract class UI {
 		// Escreva os Slots em cada coluna
 		System.out.print("\t");
 		for(Slot slot : jogo.getSlots()) {
-			System.out.print(slot.getNumero());
-			System.out.print("    ");
+			if(slot.isRevelado()) {
+				String slotChar = slot.getNumero().toString();
+				System.out.print(slotChar);
+				for(int i = 0; i < 5 - slotChar.length(); i++) {
+					System.out.print(" ");
+				}
+			} else {
+				System.out.print("#    ");
+			}
 		}
 		System.out.println("\n");
 	}
@@ -95,13 +99,8 @@ public abstract class UI {
 	}
 	
 	public static int lerColunas(Scanner sc) {
-		try {
-			char coluna = sc.nextLine().charAt(0);
-			if(coluna < 'A' || coluna > 'J') throw new InputColunaException("");
-			return ((int) coluna) - 65;
-		} catch(InputColunaException e) {
-			throw new InputMismatchException("Erro ao ler posição: Escolha uma letra de \'A\' a \'J\'");
-		}
+		char coluna = sc.nextLine().charAt(0);
+		return ((int) coluna) - 65;
 	}
 	
 	/**
