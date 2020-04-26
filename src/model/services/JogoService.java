@@ -24,8 +24,9 @@ public interface JogoService {
 	 * <p>Abre o slot solicitado de acordo com a
 	 * posição da coluna.</p>
 	 * @param pos -> posição da coluna de slots
+	 * @return a instância de slot, caso exista
 	 */
-	boolean abreSlot(int pos);
+	Slot abreSlot(int pos);
 	
 	/**
 	 * <p>Verifica se os dois slots são iguais</p>

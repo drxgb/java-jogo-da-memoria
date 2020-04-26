@@ -107,7 +107,7 @@ public abstract class UI {
 	 * <p>Mostra uma mensagem de que o jogador acertou os pares</p>
 	 */
 	public static void msgAcerto() {
-		System.out.println("\tVocê acertou!");
+		System.out.println("\tVoce acertou!");
 		System.out.println();
 	}
 	
@@ -115,7 +115,7 @@ public abstract class UI {
 	 * <p>Mostra uma mensagem de que o jogador errou os pares</p>
 	 */
 	public static void msgErro() {
-		System.out.println("\tVocê errou!");
+		System.out.println("\tVoce errou!");
 		System.out.println();
 	}
 	
@@ -133,47 +133,47 @@ public abstract class UI {
 		
 		// Mensagem de congratulação (ou não kkkk)
 		if(jogo.getTentativas() <= EXCELENTE) {
-			System.out.println("INCRÍVEL!");
+			System.out.println("INCRIVEL!");
 		} else if(jogo.getTentativas() <= BOM) {
 			System.out.println("MUITO BEM!");
 		} else if(jogo.getTentativas() <= MEDIO) {
 			System.out.println("OK");
 		} else if(jogo.getTentativas() <= RUIM) {
-			System.out.println("Fim de jogo");
+			System.out.println("FIM DE JOGO");
 		} else if(jogo.getTentativas() <= PESSIMO) {
 			System.out.println("QUE BOSTA, HEIN!");
 		}
 		
 		// Mostra quantidade de tentativas
-		System.out.print("Você concluiu o jogo em ");
+		System.out.print("Voce concluiu o jogo em ");
 		System.out.print(jogo.getTentativas());
-		System.out.print(" tentativas.");
+		System.out.println(" tentativas.");
 		
 		// Feedback
 		if(jogo.getTentativas() <= EXCELENTE) {
-			System.out.println("Cê é o bixão mesmo, hein doido?!");
+			System.out.println("Ce eh o bixao mesmo, hein doido?!");
 		} else if(jogo.getTentativas() <= BOM) {
-			System.out.println("Você é realmente bom de memória!");
+			System.out.println("Voce e realmente bom de memoria!");
 		} else if(jogo.getTentativas() <= MEDIO) {
-			System.out.println("Você foi... eh... mais ou menos, mais ou menos...");
+			System.out.println("Voce foi... eh... mais ou menos, mais ou menos...");
 		} else if(jogo.getTentativas() <= RUIM) {
-			System.out.println("Ainda não está bom. Você precisa praticar mais!");
+			System.out.println("Ainda nao esta bom. Voce precisa praticar mais!");
 		} else if(jogo.getTentativas() <= PESSIMO) {
-			System.out.println("Você é ruim de memória. Se aposenta!");
+			System.out.println("Voce eh ruim de memoria. Se aposenta, PQP!");
 		}
 		
 		// Duração da partida
 		long millis = System.currentTimeMillis() - jogo.getTempoInicial();
 		double segundos = ((double) millis) / 1000.0;
 		System.out.println();
-		System.out.print("Duração da Partida: ");
+		System.out.print("Duracao da Partida: ");
 		System.out.print(segundos);
 		System.out.println(" segundos");
 		
 		// Finalizar jogo
 		System.out.println();
 		System.out.println("Obrigado por jogar!");
-		pausa(10000);
+		pausa(5000);
 	}
 	
 }

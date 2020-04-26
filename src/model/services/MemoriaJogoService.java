@@ -45,15 +45,29 @@ public class MemoriaJogoService implements JogoService {
 	}
 
 	@Override
-	public boolean abreSlot(int pos) {
+	public Slot abreSlot(int pos) {
+		// Verifica se é uma coluna válida
 		if(pos < 0 || pos >= this.getJogo().getSlots().size())
-			return false;
-		return this.getSlotService().revela(this.getJogo().getSlots().get(pos));
+			return null;
+		// Instancia um slot
+		Slot slot = this.getJogo().getSlots().get(pos);
+		
+		// Verifica se o slot já foi aberto
+		if(!this.getSlotService().revela(slot))
+			return null;
+		
+		// Se o slot não estava aberto antes, retorne um slot
+		return slot;
 	}
 
 	@Override
 	public boolean validaJogada(Slot slotA, Slot slotB) {
-		return this.getSlotService().compara(slotA, slotB);
+		if(!this.getSlotService().compara(slotA, slotB)) {
+			slotService.esconde(slotA);
+			slotService.esconde(slotB);
+			return false;
+		}
+		return true;
 	}
 
 	@Override
