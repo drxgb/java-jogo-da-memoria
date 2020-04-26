@@ -17,7 +17,7 @@ public interface SlotService {
 	 * <p>Revela o valor do slot</p>
 	 * @param slot -> instância do slot
 	 */
-	void revela(Slot slot);
+	boolean revela(Slot slot);
 	
 	/**
 	 * <p>Esconde o valor do slot</p>

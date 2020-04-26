@@ -17,10 +17,9 @@ public class Jogo {
 	private Long tempoInicial;
 	private List<Slot> slots = new ArrayList<>();
 	
-	public Jogo(List<Slot> slots) {
+	public Jogo() {
 		this.tentativas = 0;
-		this.tempoInicial = System.currentTimeMillis();
-		this.slots = slots;
+		this.tempoInicial = 0L;
 	}
 
 	public Integer getTentativas() {
@@ -31,8 +30,8 @@ public class Jogo {
 		return slots;
 	}
 	
-	public Slot getSlot(int pos) {
-		return this.slots.get(pos);
+	public void setSlots(List<Slot> slots) {
+		this.slots = slots;
 	}
 
 	public void setTentativas(Integer tentativas) {
@@ -42,4 +41,9 @@ public class Jogo {
 	public Long getTempoInicial() {
 		return tempoInicial;
 	}
+
+	public void setTempoInicial(Long tempoInicial) {
+		this.tempoInicial = tempoInicial;
+	}
+	
 }

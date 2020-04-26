@@ -15,8 +15,8 @@ public class Slot {
 	private Integer numero;
 	private Boolean revelado;	
 
-	public Slot(Integer numero) {
-		this.numero = numero;
+	public Slot() {
+		this.numero = null;
 		this.revelado = false;
 	}
 
